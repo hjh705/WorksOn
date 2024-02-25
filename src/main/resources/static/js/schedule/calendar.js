@@ -4,8 +4,6 @@ var calendar;
  */
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
-
-
     calendar = new FullCalendar.Calendar(calendarEl, {
         // plugins:[interactionPlugin],
         initialView: 'dayGridMonth',
@@ -43,9 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             $('#id').val(eventObj.id);
             $('#title').val(eventObj.title);
-            $('#startTime').val(eventObj.start.toISOString().slice(0, 16)); // input datetime-local 포맷에 맞게 포맷팅
-            $('#endTime').val(eventObj.end ? eventObj.end.toISOString().slice(0, 16) : ''); // null 체크
-            $('#schedule-category-id').val(eventObj.extendedProps.categoryId); // 카테고리 ID가 충분하다고 가정, 필요에 따라 조정
+            $('#startTime').val(eventObj.start.toISOString().slice(0, 16));
+            $('#endTime').val(eventObj.end ? eventObj.end.toISOString().slice(0, 16) : '');
+            $('#schedule-category-id').val(eventObj.extendedProps.categoryId);
             $('#event-content').val(eventObj.extendedProps.content);
 
             $('#delete-schedule-id').val(eventObj.id);
@@ -82,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
         //change = 값이 변할 때만 확인
         let categoryId = $(this).val(); // 체크박스의 value 값 (category.id)을 가져옴
         let isChecked = $(this).is(':checked'); // 체크박스의 체크 상태
-
         if (isChecked) {
             // 체크박스가 체크될 때 - AJAX 요청으로 이벤트 데이터를 가져오고 달력에 추가
             $.ajax({
@@ -123,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         } else {
+            // 체크박스를 로드할 때 자동으로 체크하게 해보기
             // 체크박스가 해제될 때 - 달력에서 해당 카테고리의 이벤트를 제거
             var events = calendar.getEvents();
             events.forEach(function(event) {
