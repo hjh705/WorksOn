@@ -34,12 +34,7 @@ document.querySelectorAll(".ownerPageNumber").forEach((btn) => {
         console.log(pageNumber);
 
         let size = 8;
-        // 페이지 URL 생성
-        // page2 => emp
-
         let url = '/WorksOn/project/projectList.do?continue&page1=' + pageNumber + '&size1=' + size + '&page2=' + pageNumber2 + '&size2=' + size;
-
-        console.log(url);
         // 페이지 이동
          window.location.href = url;
     });

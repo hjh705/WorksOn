@@ -335,26 +335,11 @@ const pagebarEvent = () => {
                         <td>${att.content}</td>
                     </tr>
                 `;
-                        const stateElements = document.querySelectorAll('.times');
-                        stateElements.forEach((stateElement) => {
-                            if (stateElement) {
-                                const startAtValue = stateElement.innerHTML;
-                                const currentDate = new Date();
-                                const compareDate = new Date(startAtValue);
-                                let state;
-                                if (compareDate.getHours() >= 9) {
-                                    state = '지각';
-                                    stateElement.classList.add('bg-red-300');
-                                } else {
-                                    state = '정상출근';
-                                    stateElement.classList.add('bg-green-500');
-                                }
 
-                                stateElement.innerText = state;
-                            }
-                        });
+
                     });
                     modalEvent();
+                    stateEvent();
                 },
                 error(e){
                     console.log(e);
@@ -517,27 +502,11 @@ document.querySelector("#submitBtn").addEventListener('click', (e) => {
                         <td>${att.content}</td>
                     </tr>
                 `;
-                const stateElements = document.querySelectorAll('.times');
-                stateElements.forEach((stateElement) => {
-                    if (stateElement) {
-                        const startAtValue = stateElement.innerHTML;
-                        const currentDate = new Date();
-                        const compareDate = new Date(startAtValue);
-                        let state;
-                        if (currentDate.getHours() >= 9) {
-                            state = '지각';
-                            stateElement.classList.add('bg-red-300');
-                        } else {
-                            state = '정상출근';
-                            stateElement.classList.add('bg-green-500');
-                        }
 
-                        stateElement.innerText = state;
-                    }
-                });
             });
             modalEvent();
-        },
+            stateEvent();
+            },
         error(e){
             console.log(e);
         }

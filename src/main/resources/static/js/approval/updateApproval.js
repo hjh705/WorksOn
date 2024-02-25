@@ -56,16 +56,30 @@ const approvalEvent = () => {
     const approvals = document.querySelectorAll(".approver");
     console.log(approvals);
     approvals.forEach((approval, iterStat) => {
-        if (iterStat != 0) {
+        if (iterStat !== 0) {
             const sign = approvals[iterStat - 1].querySelector("input[name=sign]");
-            console.log(sign.value);
+
+            // console.dir(sign);
+            // console.log(sign.value);
             const {empId} = approval.dataset;
-            if(sign.value !== "" && loginId === empId) {
-                const thisSign = approval.querySelector("input[name=sign]");
-                console.dir(thisSign);
+            // console.log(sign.value === "");
+            // console.log(sign.value !== "");
+            // console.log(sign.value !== undefined);
+            // console.log(sign.value === undefined);
+            // console.log(loginId);
+            // console.log(empId);
+            const thisSign = approval.querySelector("input[name=sign]");
+            // console.log("thisSign ", thisSign);
+
+            if((sign.value !== "") && (loginId === empId)) {
+                // console.log("여기 들어오나요?");
+                // console.dir(thisSign);
 
                 thisSign.readOnly = false;
                 console.log(thisSign.readOnly);
+            }
+            else {
+                thisSign.readOnly = true;
             }
         }
     });

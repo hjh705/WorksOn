@@ -8,6 +8,7 @@ import com.sh.workson.attachment.entity.Attachment;
 import com.sh.workson.attachment.service.AttachmentService;
 import com.sh.workson.attachment.service.S3FileService;
 import com.sh.workson.auth.vo.EmployeeDetails;
+import com.sh.workson.employee.dto.EmployeeSearchDto;
 import com.sh.workson.project.dto.*;
 import com.sh.workson.project.entity.*;
 import com.sh.workson.project.service.IssueService;
@@ -90,16 +91,13 @@ public class ProjectController {
         Page<ProjectListDto> projects = projectService.findByEmpId(employeeDetails.getEmployee(), PageRequest.of(page2, size2));
         // 사원이 생성한 프로젝트 조회
         Page<ProjectListDto> projects2 = projectService.findByOwnerId(employeeDetails.getEmployee(), PageRequest.of(page1, size1));
-
         model.addAttribute("projectEmp", projects.getContent());
         model.addAttribute("projectEmpTotalCount", projects.getTotalElements());
         model.addAttribute("projectEmpSize", projects.getSize());
         model.addAttribute("projectEmpNumber", projects.getNumber());
         model.addAttribute("projectEmpTotalpages", projects.getTotalPages());
 
-
         log.debug("project = {}", projects.getContent());
-
         model.addAttribute("projectOwner", projects2.getContent());
         model.addAttribute("projectOwnerTotalCount", projects2.getTotalElements());
         model.addAttribute("projectOwnerSize", projects2.getSize());
@@ -251,7 +249,6 @@ public class ProjectController {
                 log.debug("attachments = {}", attachments);
             }
         }
-
         return new ResponseEntity<>(attachments, HttpStatus.OK);
     }
 
@@ -546,4 +543,17 @@ public class ProjectController {
         model.addAttribute("number", issueDetailDtos.getNumber());
         model.addAttribute("totalpages", issueDetailDtos.getTotalPages());
     }
+
+
+    @GetMapping("/searchProjectEmployee.do")
+    public ResponseEntity<?> searchEmployee(
+            @RequestParam(name = "name") String name,
+            @RequestParam(name = "id") Long id
+    ){
+        List<EmployeeSearchDto> employees = projectService.findByNameAndProjectId(name, id);
+        log.debug("employees = {}", employees);
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+
 }

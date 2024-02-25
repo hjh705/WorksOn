@@ -43,14 +43,13 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
           }
 
       }
-      // 로그인 사용자의 권한 확인 -> EMP_TEMP
+        // 로그인 사용자의 권한 확인 -> EMP_TEMP
+        log.debug("loginAuth = {}", authentication.getPrincipal());
         for(GrantedAuthority authority :authentication.getAuthorities()){
             if(authority.getAuthority().toString().equals(RoleAuth.ROLE_TEMP.toString())){
                 targetUrl = "/employee/passwordUpdate.do";
             };
         }
-
-
 
       log.debug("targetUrl = {}", targetUrl);
       redirectStrategy.sendRedirect(request, response, targetUrl);

@@ -26,7 +26,8 @@ values (seq_position_id.nextval, '주임', 7);
 insert into position
 values (seq_position_id.nextval, '사원', 8);
 select * from position;
-
+commit;
+ 
 select * from employee;
 select * from authority;
 
@@ -155,6 +156,25 @@ INSERT INTO PROJECT_EMPLOYEE (ID, PROJECT_ID, EMP_ID, PROJECT_ROLE)
 VALUES (seq_project_employee_id.nextval, 351, 351, 'READ');
 
 INSERT INTO PROJECT_EMPLOYEE (ID, PROJECT_ID, EMP_ID, PROJECT_ROLE) 
+VALUES (seq_project_employee_id.nextval, 501, 1, 'CREATE');
+INSERT INTO PROJECT_EMPLOYEE (ID, PROJECT_ID, EMP_ID, PROJECT_ROLE) 
+VALUES (seq_project_employee_id.nextval, 501, 51, 'READ');
+INSERT INTO PROJECT_EMPLOYEE (ID, PROJECT_ID, EMP_ID, PROJECT_ROLE) 
+VALUES (seq_project_employee_id.nextval, 501, 101, 'READ');
+INSERT INTO PROJECT_EMPLOYEE (ID, PROJECT_ID, EMP_ID, PROJECT_ROLE) 
+VALUES (seq_project_employee_id.nextval, 501, 151, 'CREATE');
+INSERT INTO PROJECT_EMPLOYEE (ID, PROJECT_ID, EMP_ID, PROJECT_ROLE) 
+VALUES (seq_project_employee_id.nextval, 501, 201, 'CREATE');
+INSERT INTO PROJECT_EMPLOYEE (ID, PROJECT_ID, EMP_ID, PROJECT_ROLE) 
+VALUES (seq_project_employee_id.nextval, 501, 251, 'CREATE');
+INSERT INTO PROJECT_EMPLOYEE (ID, PROJECT_ID, EMP_ID, PROJECT_ROLE) 
+VALUES (seq_project_employee_id.nextval, 501, 301, 'CREATE');
+INSERT INTO PROJECT_EMPLOYEE (ID, PROJECT_ID, EMP_ID, PROJECT_ROLE) 
+VALUES (seq_project_employee_id.nextval, 501, 351, 'CREATE');
+INSERT INTO PROJECT_EMPLOYEE (ID, PROJECT_ID, EMP_ID, PROJECT_ROLE) 
+VALUES (seq_project_employee_id.nextval, 501, 552, 'CREATE');
+
+INSERT INTO PROJECT_EMPLOYEE (ID, PROJECT_ID, EMP_ID, PROJECT_ROLE) 
 VALUES (seq_project_employee_id.nextval, 401, 502, 'CREATE');
 
 -- attend
@@ -204,6 +224,54 @@ INSERT INTO attend (id, start_at, end_at, state, employee_id) VALUES
 (seq_attend_id.nextval,TO_TIMESTAMP('2024-02-22 08:22:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2024-02-22 18:14:00', 'YYYY-MM-DD HH24:MI:SS'), 'WORK', 502);
 INSERT INTO attend (id, start_at, end_at, state, employee_id) VALUES
 (seq_attend_id.nextval,TO_TIMESTAMP('2024-02-23 08:32:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2024-02-23 18:02:00', 'YYYY-MM-DD HH24:MI:SS'), 'WORK', 502);
+
+-- dayoff
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2024-02-10', 'YYYY-MM-DD'), TO_DATE('2024-02-10', 'YYYY-MM-DD'), 1, 502, '결혼식 참석');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2024-03-10', 'YYYY-MM-DD'), TO_DATE('2024-03-10', 'YYYY-MM-DD'), 1, 502, '몸살 휴가');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2024-04-10', 'YYYY-MM-DD'), TO_DATE('2024-04-12', 'YYYY-MM-DD'), 3, 502, '가족 여행');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2024-09-10', 'YYYY-MM-DD'), TO_DATE('2024-09-12', 'YYYY-MM-DD'), 3, 502, '해외 여행');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2024-10-10', 'YYYY-MM-DD'), TO_DATE('2024-10-12', 'YYYY-MM-DD'), 3, 502, '해외 여행');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2024-11-12', 'YYYY-MM-DD'), TO_DATE('2024-11-12', 'YYYY-MM-DD'), 1, 502, '개인 사유');
+
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2023-02-10', 'YYYY-MM-DD'), TO_DATE('2023-02-10', 'YYYY-MM-DD'), 1, 502, '결혼식 참석');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2023-03-10', 'YYYY-MM-DD'), TO_DATE('2023-03-10', 'YYYY-MM-DD'), 1, 502, '몸살 휴가');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2023-04-10', 'YYYY-MM-DD'), TO_DATE('2023-04-12', 'YYYY-MM-DD'), 3, 502, '가족 여행');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2023-09-10', 'YYYY-MM-DD'), TO_DATE('2023-09-12', 'YYYY-MM-DD'), 3, 502, '해외 여행');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2023-10-10', 'YYYY-MM-DD'), TO_DATE('2023-10-12', 'YYYY-MM-DD'), 3, 502, '해외 여행');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2023-11-12', 'YYYY-MM-DD'), TO_DATE('2023-11-12', 'YYYY-MM-DD'), 1, 502, '개인 사유');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2023-12-12', 'YYYY-MM-DD'), TO_DATE('2023-12-12', 'YYYY-MM-DD'), 1, 502, '개인 사유');
+
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2022-02-10', 'YYYY-MM-DD'), TO_DATE('2022-02-10', 'YYYY-MM-DD'), 1, 502, '개인 사유');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2022-03-10', 'YYYY-MM-DD'), TO_DATE('2022-03-10', 'YYYY-MM-DD'), 1, 502, '해외 여행');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2022-04-10', 'YYYY-MM-DD'), TO_DATE('2022-04-12', 'YYYY-MM-DD'), 3, 502, '몸살 감기');
+
+
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2021-04-10', 'YYYY-MM-DD'), TO_DATE('2021-04-12', 'YYYY-MM-DD'), 2, 502, '가족 여행');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2021-09-10', 'YYYY-MM-DD'), TO_DATE('2021-09-12', 'YYYY-MM-DD'), 2, 502, '해외 여행');
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2021-10-10', 'YYYY-MM-DD'), TO_DATE('2021-10-12', 'YYYY-MM-DD'), 3, 502, '해외 여행');
+
+
+INSERT INTO dayoff (id, type, start_at, end_at, count, employee_id, content)
+VALUES (seq_dayoff_id.NEXTVAL, '연차', TO_DATE('2020-02-10', 'YYYY-MM-DD'), TO_DATE('2020-02-10', 'YYYY-MM-DD'), 1, 502, '결혼식 참석');
 
 
 -- schedule_category

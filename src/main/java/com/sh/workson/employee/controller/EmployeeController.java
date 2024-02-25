@@ -265,9 +265,7 @@ public class EmployeeController {
                     .empId(employeeDetails.getEmployee().getId())
                     .name(RoleAuth.ROLE_EMP)
                     .build());
-        log.debug("employee = {}", employee);
         employeeService.updatePassword(employee);
-
 
         return "redirect:/auth/login.do";
     }

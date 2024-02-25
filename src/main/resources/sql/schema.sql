@@ -280,6 +280,7 @@ create table chat_log(
     , constraint fk_chat_log_employee_id foreign key(employee_id) references employee(id)
     , constraint fk_chat_log_chat_room_id foreign key(chat_room_id) references chat_room(id) on delete cascade
 );
+alter table chat_log modify created_at timestamp default null;
 create sequence seq_chat_log_id start with 1 increment by 50;
 
 -- 채팅 읽지않음 확인
@@ -317,7 +318,7 @@ create table reservation(
     , constraint fk_reservation_tb_resource_id foreign key(tb_resource_id) references tb_resource(id) on delete cascade
 );
 alter table reservation rename column emp_id to employee_id;
-ALTER TABLE reservation MODIFY tb_resource_id NULL;
+alter table reservation modify tb_resource_id null;
 create sequence seq_reservation_id start with 1 increment by 50;
 
 -- 우진

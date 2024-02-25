@@ -44,7 +44,7 @@
             >
               <img
                 class="object-cover w-8 h-8 rounded-full"
-                th:src="${#authentication.principal.employee.profileUrl}"
+                th:src="${#authentication.principal.employee.profileUrl != null ? #authentication.principal.employee.profileUrl : 'https://bucket-minjeong2024.s3.ap-northeast-2.amazonaws.com/profile.png'}"
                 alt="사원 프로필 사진"
                 aria-hidden="true"
               />

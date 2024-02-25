@@ -187,15 +187,16 @@ document.querySelector("#create-emp-search-input").addEventListener('keyup', (e)
     console.log(input.value);
     const searchList = document.querySelector("#create-emp-search-list");
     searchList.innerHTML = '';
-
+    const projectId = document.querySelector("#projectId");
     if(input.value !== ''){
         $.ajax({
-            url: `${contextPath}employee/searchEmployee.do`,
+            url: `${contextPath}project/searchProjectEmployee.do`,
             headers: {
                 [csrfHeaderName] : csrfToken
             },
             data: {
-                name: input.value
+                name: input.value,
+                id: projectId.value
             },
             success(response) {
                 console.log(response);

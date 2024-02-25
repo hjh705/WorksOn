@@ -13,7 +13,7 @@ import java.util.List;
 public interface ResourceRepository extends JpaRepository<Resource, Long> {
     List<Resource> findByType(@Param("type") Type type);
 
-    @Query("from Resource order by type desc")
+    @Query("from Resource r order by r.type desc")
     List<Resource> findByOrderByType();
 
     @Query("select name from Resource where id = :id")

@@ -174,7 +174,7 @@
                                 </button>
                             </td>
                             <script th:inline="javascript">
-                                document.addEventListener('DOMContentLoaded', function() {
+                                const stateEvent = () => {
                                     const stateElements = document.querySelectorAll('.times');
                                     stateElements.forEach((stateElement) => {
                                         if (stateElement) {
@@ -198,6 +198,10 @@
                                             }
                                         }
                                     })
+                                }
+
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    stateEvent();
 
                                 });
                             </script>

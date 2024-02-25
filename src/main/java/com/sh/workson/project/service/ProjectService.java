@@ -5,6 +5,7 @@ import com.sh.workson.attachment.entity.Attachment;
 import com.sh.workson.attachment.repository.AttachmentRepository;
 import com.sh.workson.attachment.service.S3FileService;
 import com.sh.workson.employee.dto.EmployeeProjectOwnerDto;
+import com.sh.workson.employee.dto.EmployeeSearchDto;
 import com.sh.workson.employee.entity.Employee;
 import com.sh.workson.project.dto.*;
 import com.sh.workson.project.entity.*;
@@ -164,5 +165,20 @@ public class ProjectService {
 
     private ProjectDashBoardDto convertToProjectDashBoardDto(Project project) {
         return new ProjectDashBoardDto(project.getId(), project.getTitle(), String.valueOf(project.getStatus()));
+    }
+
+    public List<EmployeeSearchDto> findByNameAndProjectId(String name, Long id) {
+        List<Project> projects = projectRepository.findByNameAndProjectId(name, id);
+        List<EmployeeSearchDto> employeeDtos = new ArrayList<>();
+        for(int i = 0; i < projects.size(); i++){
+            for(int j = 0; j < projects.get(i).getProjectEmployees().size(); j++){
+                employeeDtos.add(converToEmployeeDtos(projects.get(i).getProjectEmployees().get(j).getEmployee()));
+            }
+        }
+       return employeeDtos;
+    }
+
+    private EmployeeSearchDto converToEmployeeDtos(Employee employee) {
+        return modelMapper.map(employee, EmployeeSearchDto.class);
     }
 }

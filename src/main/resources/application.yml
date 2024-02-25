@@ -5,7 +5,6 @@ spring:
   profiles:
     default: test
     active: prod
-#    active: local
   jpa:
     generate-ddl: true
     show-sql: true

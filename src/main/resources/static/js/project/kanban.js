@@ -141,18 +141,18 @@ document.taskCreateFrm.addEventListener('submit', (e) => {
             const drag = `
             <div draggable="true" data-id="${response.id}" class="drag w-full hover:bg-gray-50 bg-white p-3 rounded-md shadow-sm text-gray-700">
                     <ul>
-                        <li class="flex justify-between">
-                            <div class="font-semibold">${name.value}</div>
-                            <div class="flex">
-                                <div class="flex items-center">
+                        <li class="flex justify-between" data-id="${response.id}">
+                            <div class="font-semibold" data-id="${response.id}">${name.value}</div>
+                            <div class="flex" data-id="${response.id}">
+                                <div class="flex items-center" data-id="${response.id}">
                                     ${starY}
                                 </div>
-                                <div class="flex items-center">
+                                <div class="flex items-center" data-id="${response.id}">
                                     ${starG}
                                 </div>
                             </div>
                         </li>
-                        <li>${taskEmpName.value}${taskEmpPosition.value}</li>
+                        <li data-id="${response.id}">${taskEmpName.value}${taskEmpPosition.value}</li>
                     </ul>
                 </div>
             `;
@@ -292,15 +292,17 @@ document.querySelector("#create-search-input").addEventListener('keyup', (e) => 
    console.log(input.value);
    const searchList = document.querySelector("#create-search-list");
    searchList.innerHTML = '';
+   const projectId = document.querySelector("#projectId");
 
    if(input.value !== ''){
       $.ajax({
-         url: `${contextPath}employee/searchEmployee.do`,
+         url: `${contextPath}project/searchProjectEmployee.do`,
          headers: {
             [csrfHeaderName] : csrfToken
          },
          data: {
-            name: input.value
+            name: input.value,
+            id: projectId.value
          },
          success(response) {
             console.log(response);

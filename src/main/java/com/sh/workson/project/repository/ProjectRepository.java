@@ -1,5 +1,6 @@
 package com.sh.workson.project.repository;
 
+import com.sh.workson.employee.entity.Employee;
 import com.sh.workson.project.entity.Project;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,4 +41,7 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     @Query("from Project p join fetch p.projectEmployees pe join fetch p.employee e join fetch e.department join fetch e.position where p.employee.id = :id or pe.employee.id = :id order by p.id desc ")
     Page<Project> findTop3Project(@Param("id") Long id, Pageable pageable);
+
+    @Query("from Project p join fetch p.projectEmployees pe join fetch pe.employee e join fetch e.department join fetch e.position where p.id = :id and pe.employee.name like '%' || :name || '%'")
+    List<Project> findByNameAndProjectId(@Param("name") String name, @Param("id") Long id);
 }

@@ -15,18 +15,18 @@ import java.util.List;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    @Query("from Reservation where resource.id = :id and startAt >= :today")
+    @Query("from Reservation r join fetch r.employee join fetch r.resource where r.resource.id = :id and r.startAt >= :today")
     List<Reservation> findByResourceId(@Param("id") Long id, @Param("today") LocalDateTime today);
 
-    @Query("from Reservation where employee.id = :id and startAt >= :today and resource.type = :type")
+    @Query("from Reservation r join fetch r.employee join fetch r.resource where r.employee.id = :id and r.startAt >= :today and r.resource.type = :type")
     List<Reservation> findByEmpId(@Param("id") Long id, @Param("today") LocalDateTime today, @Param("type") Type type);
 
-    @Query("from Reservation r where r.resource.id = :resourceId and r.startAt >= :startTime and r.endAt < :endTime order by r.startAt desc")
+    @Query("from Reservation r join fetch r.employee join fetch r.resource where r.resource.id = :resourceId and r.startAt >= :startTime and r.endAt < :endTime order by r.startAt desc")
     Page<Reservation> findBetweenSearchDatePage(Pageable pageable, @Param("resourceId") Long resourceId, @Param("startTime") LocalDateTime startTime, @Param("endTime") LocalDateTime endTime);
 
     @Query("select count(*) from Reservation r where r.resource.id = :resourceId and r.startAt >= :startAt and r.endAt <= :endAt")
     int findBetweenSearchDate(@Param("resourceId") Long resourceId, @Param("startAt") LocalDateTime startAt, @Param("endAt") LocalDateTime endAt);
 
-    @Query("from Reservation r where r.resource.id = :id and r.startAt > :today order by r.startAt desc")
+    @Query("from Reservation r join fetch r.employee join fetch r.resource where r.resource.id = :id and r.startAt > :today order by r.startAt desc")
     List<Reservation> findAllAfterToday(@Param("id") Long id, @Param("today") LocalDateTime today);
 }

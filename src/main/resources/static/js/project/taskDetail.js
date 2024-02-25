@@ -608,16 +608,19 @@ document.querySelector("#create-search-input").addEventListener('keyup', (e) => 
     const input = e.target;
     console.log(input.value);
     const searchList = document.querySelector("#create-search-list");
+    const projectId = document.querySelector("#projectId");
+
     searchList.innerHTML = '';
 
     if(input.value !== ''){
         $.ajax({
-            url: `${contextPath}employee/searchEmployee.do`,
+            url: `${contextPath}project/searchProjectEmployee.do`,
             headers: {
                 [csrfHeaderName] : csrfToken
             },
             data: {
-                name: input.value
+                name: input.value,
+                id: projectId.value
             },
             success(response) {
                 console.log(response);

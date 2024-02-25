@@ -17,7 +17,7 @@
             <div class="flex flex-wrap w-3/5 mx-auto items-center p-10 bg-white rounded-lg shadow-xs hover:shadow-lg transition-all">
                 <div class="w-1/2 p-4">
                     <div th:id="img-wrap" class="rounded-full w-[300px] h-[300px] overflow-hidden bg-blue-50 mx-auto">
-                        <img th:src="${#authentication.principal.employee.profileUrl}" alt="" id="profile-preview">
+                        <img th:src="${#authentication.principal.employee.profileUrl != null ? #authentication.principal.employee.profileUrl : 'https://bucket-minjeong2024.s3.ap-northeast-2.amazonaws.com/profile.png'}" alt="" id="profile-preview">
                     </div>
                     <form class="p-4" method="post" enctype="multipart/form-data" name="updateProfile">
 <!--                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">프로필 사진 업로드</label>-->

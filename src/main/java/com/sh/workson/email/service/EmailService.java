@@ -27,7 +27,7 @@ public class EmailService {
             String htmlBody = "<html><body>"
                     + "<h1>환영합니다, " + subject + "님!</h1>"
                     + "<p>회원가입을 축하드립니다. 아래 링크를 클릭하여 홈페이지로 이동하세요.</p>"
-                    + "<p><a href=\"http://localhost:8080/WorksOn/\">홈페이지로 이동</a></p>"
+                    + "<p><a href=\"http://localhost:8080/WorksOn/auth/login.do\">홈페이지로 이동</a></p>"
                     + "<p>가입한 아이디: " + to + "</p>"
                     + "<p>임시 비밀번호: " + body + "</p>"
                     + "</body></html>";
