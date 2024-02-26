@@ -72,7 +72,7 @@
                         <td><input type="text" class="w-24 p-2" th:value="${approver.approverName}" readonly></td>
                     </tr>
                     <tr class="border approver" th:data-emp-id="${approver.approverId}">
-                        <td><input type="text" name="sign" class="signs w-24 p-2" th:value="${approver.sign}" th:data-is-last="isLast" th:data-line-id="${approver.lineId}"></td>
+                        <td><input type="text" name="sign" class="signs w-24 p-2" th:value="${approver.sign}" th:data-is-last="isLast" th:data-line-id="${approver.lineId}" th:readonly="${#authentication.principal.employee.id != approver.approverId}"></td>
 
                     </tr>
                     <tr>
