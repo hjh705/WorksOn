@@ -27,9 +27,9 @@
 
     <div class="container mx-auto px-4">
         <!-- 글쓰기 버튼 -->
-        <button class="text-white bg-blue-500 border-blue-500 hover:bg-blue-600 hover:text-white"
-                 th:onclick="|location.href='@{/board/createBoard.do}'|">
-        글쓰기
+        <button id="btn-add" class="bg-white text-blue-300 border border-green-500 hover:bg-green-500 hover:text-blue-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline block my-3 ml-auto"
+                th:onclick="|location.href='@{/board/createBoard.do}'|">
+            글쓰기
         </button>
 
         <!-- 총 게시물 수 -->
