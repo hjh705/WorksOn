@@ -169,7 +169,6 @@ class ScheduleRepositoryTest {
         Employee employee = employeeRepository.findById(1L).orElse(null);
         //when
         List<ScheduleCategory> scheduleCategories = scheduleCategoryRepository.findByEmpId(employee.getId());
-
         //then
         System.out.println(scheduleCategories);
     }

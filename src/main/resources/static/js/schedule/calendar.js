@@ -221,6 +221,10 @@ document.getElementById('delete-schedule').addEventListener('click', function() 
     form.submit();
 });
 
+document.getElementById("allScheduleCategory").addEventListener('click', function (){
+    console.log("모든일정보기 체크")
+})
+
 // function setModalAction(mode){
 //     var form = document.categoryModal;
 //
